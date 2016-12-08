@@ -11,6 +11,9 @@
 *.userprefs
 
 SWIGDemo/Generated/*
+!SWIGDemo/Generated/swigdemolib.cs
+!SWIGDemo/Generated/SWIGDEMOLIBpinvoke.cs
+cpp_backend/swig_interface_wrap.h
 
 # Build results
 [Dd]ebug/
