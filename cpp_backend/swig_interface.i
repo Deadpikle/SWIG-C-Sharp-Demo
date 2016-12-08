@@ -1,4 +1,4 @@
-%module swigdemolib
+%module(directors="1") swigdemolib
  
 %{
     #include "SWIGDemo.h"
@@ -11,3 +11,5 @@
 %include "SWIGDemo.h"
 
 %template(IntVector) std::vector<int>;
+
+%feature("director") Callback;

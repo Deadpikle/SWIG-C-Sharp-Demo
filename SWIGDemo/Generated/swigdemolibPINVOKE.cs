@@ -187,6 +187,15 @@ class swigdemolibPINVOKE {
   }
 
 
+  [global::System.Runtime.InteropServices.DllImport("swigdemolib", EntryPoint="CSharp_delete_CallbackObj")]
+  public static extern void delete_CallbackObj(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("swigdemolib", EntryPoint="CSharp_CallbackObj_run")]
+  public static extern void CallbackObj_run(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("swigdemolib", EntryPoint="CSharp_new_CallbackObj")]
+  public static extern global::System.IntPtr new_CallbackObj();
+
   [global::System.Runtime.InteropServices.DllImport("swigdemolib", EntryPoint="CSharp_new_BasicObject")]
   public static extern global::System.IntPtr new_BasicObject();
 
@@ -210,6 +219,9 @@ class swigdemolibPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("swigdemolib", EntryPoint="CSharp_BasicObject_getSum")]
   public static extern int BasicObject_getSum(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("swigdemolib", EntryPoint="CSharp_BasicObject_BeFancy")]
+  public static extern void BasicObject_BeFancy(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("swigdemolib", EntryPoint="CSharp_delete_BasicObject")]
   public static extern void delete_BasicObject(global::System.Runtime.InteropServices.HandleRef jarg1);

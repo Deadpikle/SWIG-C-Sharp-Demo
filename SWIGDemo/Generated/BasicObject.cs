@@ -78,4 +78,8 @@ public class BasicObject : global::System.IDisposable {
     return ret;
   }
 
+  public void BeFancy(CallbackObj callbackObj) {
+    swigdemolibPINVOKE.BasicObject_BeFancy(swigCPtr, CallbackObj.getCPtr(callbackObj));
+  }
+
 }

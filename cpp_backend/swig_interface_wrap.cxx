@@ -13,6 +13,7 @@
 #define SWIGCSHARP
 #endif
 
+#define SWIG_DIRECTORS
 
 
 #ifdef __cplusplus
@@ -298,6 +299,67 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_swigdemolib(SWIG_CSharpSt
 
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, msg, ""); return nullreturn; } else
 
+/* -----------------------------------------------------------------------------
+ * director_common.swg
+ *
+ * This file contains support for director classes which is common between
+ * languages.
+ * ----------------------------------------------------------------------------- */
+
+/*
+  Use -DSWIG_DIRECTOR_STATIC if you prefer to avoid the use of the
+  'Swig' namespace. This could be useful for multi-modules projects.
+*/
+#ifdef SWIG_DIRECTOR_STATIC
+/* Force anonymous (static) namespace */
+#define Swig
+#endif
+/* -----------------------------------------------------------------------------
+ * director.swg
+ *
+ * This file contains support for director classes so that C# proxy
+ * methods can be called from C++.
+ * ----------------------------------------------------------------------------- */
+
+#if defined(DEBUG_DIRECTOR_OWNED)
+#include <iostream>
+#endif
+#include <string>
+#include <exception>
+
+namespace Swig {
+  /* Director base class - not currently used in C# directors */
+  class Director {
+  };
+
+  /* Base class for director exceptions */
+  class DirectorException : public std::exception {
+  protected:
+    std::string swig_msg;
+
+  public:
+    DirectorException(const char *msg) : swig_msg(msg) {
+    }
+
+    DirectorException(const std::string &msg) : swig_msg(msg) {
+    }
+
+    virtual ~DirectorException() throw() {
+    }
+
+    const char *what() const throw() {
+      return swig_msg.c_str();
+    }
+  };
+
+  /* Pure virtual method exception */
+  class DirectorPureVirtualException : public DirectorException {
+  public:
+    DirectorPureVirtualException(const char *msg) : DirectorException(std::string("Attempt to invoke pure virtual method ") + msg) {
+    }
+  };
+}
+
 
     #include "SWIGDemo.h"
 
@@ -429,9 +491,43 @@ SWIGINTERN bool std_vector_Sl_int_Sg__Remove(std::vector< int > *self,int const 
         return false;
       }
 
+
+/* ---------------------------------------------------
+ * C++ director class methods
+ * --------------------------------------------------- */
+
+#include "swig_interface_wrap.h"
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_CallbackObj(void * jarg1) {
+  CallbackObj *arg1 = (CallbackObj *) 0 ;
+  
+  arg1 = (CallbackObj *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CallbackObj_run(void * jarg1) {
+  CallbackObj *arg1 = (CallbackObj *) 0 ;
+  
+  arg1 = (CallbackObj *)jarg1; 
+  (arg1)->run();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_CallbackObj() {
+  void * jresult ;
+  CallbackObj *result = 0 ;
+  
+  result = (CallbackObj *)new CallbackObj();
+  jresult = (void *)result; 
+  return jresult;
+}
+
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_BasicObject() {
   void * jresult ;
@@ -539,6 +635,16 @@ SWIGEXPORT int SWIGSTDCALL CSharp_BasicObject_getSum(void * jarg1, void * jarg2)
   result = (int)(arg1)->getSum((std::vector< int > const &)*arg2);
   jresult = result; 
   return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BasicObject_BeFancy(void * jarg1, void * jarg2) {
+  BasicObject *arg1 = (BasicObject *) 0 ;
+  CallbackObj *arg2 = (CallbackObj *) 0 ;
+  
+  arg1 = (BasicObject *)jarg1; 
+  arg2 = (CallbackObj *)jarg2; 
+  (arg1)->BeFancy(arg2);
 }
 
 

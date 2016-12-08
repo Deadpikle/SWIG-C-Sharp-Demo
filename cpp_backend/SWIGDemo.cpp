@@ -1,7 +1,5 @@
 #include "SWIGDemo.h"
 
-#include <iostream>
-
 BasicObject::BasicObject() {
 	this->number = -1;
 }
@@ -37,4 +35,12 @@ int BasicObject::getSum(const std::vector<int>& nums) {
 	for (int i : nums)
 		sum += i;
 	return sum;
+}
+
+void BasicObject::BeFancy(CallbackObj *callbackObj) {
+	std::cout << "Tipping hat to be fancy..." << std::endl;
+	if (callbackObj) {
+		callbackObj->run();
+	}
+	std::cout << "Taking a mighty bow..." << std::endl;
 }
