@@ -12,6 +12,7 @@ namespace SWIGDemo
 
         public override void run()
         {
+            base.run();
             Console.WriteLine("C# -> InheritanceFTW.run()");
         }
     }

@@ -8,8 +8,8 @@
 %include <std_string_original.i>
 %include <std_vector.i>
 
-%include "SWIGDemo.h"
-
+%feature("director") CallbackObj;
 %template(IntVector) std::vector<int>;
 
-%feature("director") Callback;
+%include "SWIGDemo.h"
+

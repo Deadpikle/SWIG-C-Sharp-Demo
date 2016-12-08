@@ -498,163 +498,36 @@ SWIGINTERN bool std_vector_Sl_int_Sg__Remove(std::vector< int > *self,int const 
 
 #include "swig_interface_wrap.h"
 
+SwigDirector_CallbackObj::SwigDirector_CallbackObj() : CallbackObj(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+SwigDirector_CallbackObj::~SwigDirector_CallbackObj() {
+  
+}
+
+
+void SwigDirector_CallbackObj::run() {
+  if (!swig_callbackrun) {
+    CallbackObj::run();
+    return;
+  } else {
+    swig_callbackrun();
+  }
+}
+
+void SwigDirector_CallbackObj::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_CallbackObj::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_CallbackObj(void * jarg1) {
-  CallbackObj *arg1 = (CallbackObj *) 0 ;
-  
-  arg1 = (CallbackObj *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_CallbackObj_run(void * jarg1) {
-  CallbackObj *arg1 = (CallbackObj *) 0 ;
-  
-  arg1 = (CallbackObj *)jarg1; 
-  (arg1)->run();
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_CallbackObj() {
-  void * jresult ;
-  CallbackObj *result = 0 ;
-  
-  result = (CallbackObj *)new CallbackObj();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_BasicObject() {
-  void * jresult ;
-  BasicObject *result = 0 ;
-  
-  result = (BasicObject *)new BasicObject();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_BasicObject_sayHello(void * jarg1) {
-  BasicObject *arg1 = (BasicObject *) 0 ;
-  
-  arg1 = (BasicObject *)jarg1; 
-  (arg1)->sayHello();
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_BasicObject_multiply(void * jarg1, int jarg2, int jarg3) {
-  int jresult ;
-  BasicObject *arg1 = (BasicObject *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  int result;
-  
-  arg1 = (BasicObject *)jarg1; 
-  arg2 = (int)jarg2; 
-  arg3 = (int)jarg3; 
-  result = (int)(arg1)->multiply(arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT char * SWIGSTDCALL CSharp_BasicObject_getBackFirstChar(void * jarg1, char * jarg2) {
-  char * jresult ;
-  BasicObject *arg1 = (BasicObject *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string result;
-  
-  arg1 = (BasicObject *)jarg1; 
-  if (!jarg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
-    return 0;
-  }
-  std::string arg2_str(jarg2);
-  arg2 = &arg2_str; 
-  result = (arg1)->getBackFirstChar((std::string const &)*arg2);
-  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_BasicObject_setNumber(void * jarg1, int jarg2) {
-  BasicObject *arg1 = (BasicObject *) 0 ;
-  int arg2 ;
-  
-  arg1 = (BasicObject *)jarg1; 
-  arg2 = (int)jarg2; 
-  (arg1)->setNumber(arg2);
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_BasicObject_getNumber(void * jarg1) {
-  int jresult ;
-  BasicObject *arg1 = (BasicObject *) 0 ;
-  int result;
-  
-  arg1 = (BasicObject *)jarg1; 
-  result = (int)((BasicObject const *)arg1)->getNumber();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_BasicObject_getNumberStatic(void * jarg1) {
-  int jresult ;
-  BasicObject *arg1 = 0 ;
-  int result;
-  
-  arg1 = (BasicObject *)jarg1;
-  if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "BasicObject const & type is null", 0);
-    return 0;
-  } 
-  result = (int)BasicObject::getNumberStatic((BasicObject const &)*arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_BasicObject_getSum(void * jarg1, void * jarg2) {
-  int jresult ;
-  BasicObject *arg1 = (BasicObject *) 0 ;
-  std::vector< int > *arg2 = 0 ;
-  int result;
-  
-  arg1 = (BasicObject *)jarg1; 
-  arg2 = (std::vector< int > *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< int > const & type is null", 0);
-    return 0;
-  } 
-  result = (int)(arg1)->getSum((std::vector< int > const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_BasicObject_BeFancy(void * jarg1, void * jarg2) {
-  BasicObject *arg1 = (BasicObject *) 0 ;
-  CallbackObj *arg2 = (CallbackObj *) 0 ;
-  
-  arg1 = (BasicObject *)jarg1; 
-  arg2 = (CallbackObj *)jarg2; 
-  (arg1)->BeFancy(arg2);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_BasicObject(void * jarg1) {
-  BasicObject *arg1 = (BasicObject *) 0 ;
-  
-  arg1 = (BasicObject *)jarg1; 
-  delete arg1;
-}
-
 
 SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_Clear(void * jarg1) {
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
@@ -1088,6 +961,176 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntVector(void * jarg1) {
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   
   arg1 = (std::vector< int > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_CallbackObj(void * jarg1) {
+  CallbackObj *arg1 = (CallbackObj *) 0 ;
+  
+  arg1 = (CallbackObj *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CallbackObj_run(void * jarg1) {
+  CallbackObj *arg1 = (CallbackObj *) 0 ;
+  
+  arg1 = (CallbackObj *)jarg1; 
+  (arg1)->run();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CallbackObj_runSwigExplicitCallbackObj(void * jarg1) {
+  CallbackObj *arg1 = (CallbackObj *) 0 ;
+  
+  arg1 = (CallbackObj *)jarg1; 
+  (arg1)->CallbackObj::run();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_CallbackObj() {
+  void * jresult ;
+  CallbackObj *result = 0 ;
+  
+  result = (CallbackObj *)new SwigDirector_CallbackObj();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CallbackObj_director_connect(void *objarg, SwigDirector_CallbackObj::SWIG_Callback0_t callback0) {
+  CallbackObj *obj = (CallbackObj *)objarg;
+  SwigDirector_CallbackObj *director = dynamic_cast<SwigDirector_CallbackObj *>(obj);
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_BasicObject() {
+  void * jresult ;
+  BasicObject *result = 0 ;
+  
+  result = (BasicObject *)new BasicObject();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BasicObject_sayHello(void * jarg1) {
+  BasicObject *arg1 = (BasicObject *) 0 ;
+  
+  arg1 = (BasicObject *)jarg1; 
+  (arg1)->sayHello();
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_BasicObject_multiply(void * jarg1, int jarg2, int jarg3) {
+  int jresult ;
+  BasicObject *arg1 = (BasicObject *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int result;
+  
+  arg1 = (BasicObject *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (int)(arg1)->multiply(arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_BasicObject_getBackFirstChar(void * jarg1, char * jarg2) {
+  char * jresult ;
+  BasicObject *arg1 = (BasicObject *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string result;
+  
+  arg1 = (BasicObject *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (arg1)->getBackFirstChar((std::string const &)*arg2);
+  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BasicObject_setNumber(void * jarg1, int jarg2) {
+  BasicObject *arg1 = (BasicObject *) 0 ;
+  int arg2 ;
+  
+  arg1 = (BasicObject *)jarg1; 
+  arg2 = (int)jarg2; 
+  (arg1)->setNumber(arg2);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_BasicObject_getNumber(void * jarg1) {
+  int jresult ;
+  BasicObject *arg1 = (BasicObject *) 0 ;
+  int result;
+  
+  arg1 = (BasicObject *)jarg1; 
+  result = (int)((BasicObject const *)arg1)->getNumber();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_BasicObject_getNumberStatic(void * jarg1) {
+  int jresult ;
+  BasicObject *arg1 = 0 ;
+  int result;
+  
+  arg1 = (BasicObject *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "BasicObject const & type is null", 0);
+    return 0;
+  } 
+  result = (int)BasicObject::getNumberStatic((BasicObject const &)*arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_BasicObject_getSum(void * jarg1, void * jarg2) {
+  int jresult ;
+  BasicObject *arg1 = (BasicObject *) 0 ;
+  std::vector< int > *arg2 = 0 ;
+  int result;
+  
+  arg1 = (BasicObject *)jarg1; 
+  arg2 = (std::vector< int > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< int > const & type is null", 0);
+    return 0;
+  } 
+  result = (int)(arg1)->getSum((std::vector< int > const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BasicObject_BeFancy(void * jarg1, void * jarg2) {
+  BasicObject *arg1 = (BasicObject *) 0 ;
+  CallbackObj *arg2 = (CallbackObj *) 0 ;
+  
+  arg1 = (BasicObject *)jarg1; 
+  arg2 = (CallbackObj *)jarg2; 
+  (arg1)->BeFancy(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_BasicObject(void * jarg1) {
+  BasicObject *arg1 = (BasicObject *) 0 ;
+  
+  arg1 = (BasicObject *)jarg1; 
   delete arg1;
 }
 
